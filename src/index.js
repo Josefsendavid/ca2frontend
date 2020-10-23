@@ -14,42 +14,58 @@ function allPersons() {
             document.getElementById("tb").innerHTML = trStr;
         })
 
-document.getElementById("getByHobby").onclick = () => {
-    const hobby = document.getElementById("getHobby").value;
-    fetch(`${"http://localhost:8080/jpareststarter/api/hobby"}/${hobby}`)
-    .then(res => fetchWithErrorCheck(res))
-    .then(function (data) {
-        const pRows = data.map((person) => {
-        return `<tr>
+    document.getElementById("reload").onclick = () => {
+        allPersons();
+    }
+
+    document.getElementById("getByHobby").onclick = () => {
+        const hobby = document.getElementById("getHobby").value;
+        fetch(`${"http://localhost:8080/jpareststarter/api/hobby"}/${hobby}`)
+            .then(res => fetchWithErrorCheck(res))
+            .then(function (data) {
+                const pRows = data.map((person) => {
+                    return `<tr>
         <td>${person.id}</td>
         <td>${person.firstName}</td>
         <td>${person.lastName}</td>
         <td>${person.email}</td>
         <td>${hobby}</td>
         </tr>`
-        });
-        const trStr = pRows.join("");
-        document.getElementById("tb").innerHTML = trStr;
-    })        
-}
-allCityInfo();
-function allCityInfo() {
-document.getElementById("tbZip").value = "";
-fetch("http://localhost:8080/jpareststarter/api/cityinfo/all")
-.then(res => fetchWithErrorCheck(res))
-.then(function (data) {
-    const trs = data.map(zips => {
-        console.log(zips)
-        return `<tr>
-        <td>${zips.zipcode}</td>
-        <td>${zips.city}</td>
+                });
+                const trStr = pRows.join("");
+                document.getElementById("tb").innerHTML = trStr;
+            })
+    }
+    allCityInfo();
+    function allCityInfo() {
+        document.getElementById("tbZip").value = "";
+        fetch("http://localhost:8080/jpareststarter/api/cityinfo/all")
+            .then(res => fetchWithErrorCheck(res))
+            .then(function (data) {
+                const trs = data.map(zips => {
+                    console.log(zips)
+                    return `<tr>
+        <td>${zips}</td>
         </tr>`
-    });
+                });
+                const trStr = trs.join(" ");
+                document.getElementById("tbZip").innerHTML = trStr;
+            })
+    }
+
+    document.getElementById("getHobbyCount").onclick = () => {
+        var personCount = "";
+        const hobby = document.getElementById("findHobbyCount").value;
+        fetch(`${"http://localhost:8080/jpareststarter/api/hobby/count"}/${hobby}`)
+        .then(res => fetchWithErrorCheck(res))
+        .then(function(data) {
+            personCount = data.count;
+            console.log(personCount)
+            document.getElementById("hobbyCount").innerHTML = personCount + " With hobby: " + hobby;
+                return personCount;
+            });
+        }
     
-    const trStr = trs.join(" ");
-    document.getElementById("tbZip").innerHTML = trStr;
-})
-}
 
     function fetchWithErrorCheck(res) {
         if (!res.ok) {
