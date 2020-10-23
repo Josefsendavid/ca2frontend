@@ -37,11 +37,16 @@ function allCityInfo() {
 document.getElementById("tbZip").value = "";
 fetch("http://localhost:8080/jpareststarter/api/cityinfo/all")
 .then(res => fetchWithErrorCheck(res))
-.then((data) => {
-    const trs = data.all.map(zips => {
-        return `<tr><td>${zips.zipcode}</td><td>${zips.city}</td></tr>`
+.then(function (data) {
+    const trs = data.map(zips => {
+        console.log(zips)
+        return `<tr>
+        <td>${zips.zipcode}</td>
+        <td>${zips.city}</td>
+        </tr>`
     });
-    const trStr = trs.join("");
+    
+    const trStr = trs.join(" ");
     document.getElementById("tbZip").innerHTML = trStr;
 })
 }
