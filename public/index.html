@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>FIRST NAME</th>
+          <th>LAST NAME</th>
+          <th>EMAIL</th>
+          <th>HOBBY</th>
+        </tr>
+      </thead>
+      <tbody id="tb"></tbody>
+    </table>
+    <button type="button" id="reload">Reload Page</button>
+    <input type="text" id="getHobby" placeholder="Enter hobby name">
+    <button id="getByHobby">get by hobby</button>
+
+    <table>
+      <thead>
+        <td>
+          Zipcode
+        </td>
+        <td>
+          City
+        </td>
+      </thead>
+      <tbody id="tbZip"></tbody>
+    </table>
+
+    <script src="bundle.js"></script>
+</body>
+
+</html>
