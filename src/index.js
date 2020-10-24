@@ -36,6 +36,26 @@ function allPersons() {
                 document.getElementById("tb").innerHTML = trStr;
             })
     }
+
+    document.getElementById("getByCity").onclick = () => {
+        const city = document.getElementById("getCity").value;
+        fetch(`${"http://localhost:8080/jpareststarter/api/cityinfo"}/${city}`)
+            .then(res => fetchWithErrorCheck(res))
+            .then(function (data) {
+                const pRows = data.map((person) => {
+                    return `<tr>
+        <td>${person.id}</td>
+        <td>${person.firstName}</td>
+        <td>${person.lastName}</td>
+        <td>${person.email}</td>
+        <td>${person.hobby}</td>
+        </tr>`
+                });
+                const trStr = pRows.join("");
+                document.getElementById("tb").innerHTML = trStr;
+            })
+    }
+
     allCityInfo();
     function allCityInfo() {
         document.getElementById("tbZip").value = "";
@@ -45,7 +65,8 @@ function allPersons() {
                 const trs = data.map(zips => {
                     console.log(zips)
                     return `<tr>
-        <td>${zips}</td>
+        <td>${zips[0]}</td>
+        <td>${zips[1]}</td>
         </tr>`
                 });
                 const trStr = trs.join(" ");
@@ -66,6 +87,7 @@ function allPersons() {
             });
         }
     
+        
 
     function fetchWithErrorCheck(res) {
         if (!res.ok) {

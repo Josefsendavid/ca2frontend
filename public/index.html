@@ -14,8 +14,20 @@
 </head>
 
 <body>
-  <div class="main">
-
+  <div class="main" style="overflow-y: auto;">
+    <table align="right">
+      <thead>
+        <tr>
+        <th>
+          ZIPCODE
+        </th>
+        <th>
+          CITY
+        </th>
+        </tr>
+      </thead>
+      <tbody id="tbZip"></tbody>
+    </table>
     <div>
     <table>
       <thead>
@@ -29,21 +41,17 @@
       </thead>
       <tbody id="tb"></tbody>
     </table>
-    <button type="button" id="reload">Reload Page</button><br>
+    <button type="button" id="reload">All Persons</button><br>
     <p type="text" id="hobbyCount"></p>
     <input type="text" id="findHobbyCount" placeholder="Enter hobby name">
     <button id="getHobbyCount">get hobby count</button>
   </div>
     <input type="text" id="getHobby" placeholder="Enter hobby name">
     <button id="getByHobby">person by hobby</button>
-    <table>
-      <thead>
-        <td>
-          ZIPZODE & CITY
-        </td>
-      </thead>
-      <tbody id="tbZip"></tbody>
-    </table>
+    <br>
+    <input type="text" id="getCity" placeholder="Enter city name">
+    <button id="getByCity">person by zipcode</button>
+
 
     <script src="bundle.js"></script>
 </body>
