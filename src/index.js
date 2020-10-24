@@ -63,7 +63,6 @@ function allPersons() {
             .then(res => fetchWithErrorCheck(res))
             .then(function (data) {
                 const trs = data.map(zips => {
-                    console.log(zips)
                     return `<tr>
         <td>${zips[0]}</td>
         <td>${zips[1]}</td>

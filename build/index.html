@@ -1,32 +1,92 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="style.css" rel="stylesheet" />
-  </head>
 
-  <body>
-    <div class="navbar">
-      <a href="" id="btnEx1">Exercise 1</a>
-      <a href="" id="btnEx2">Exercise 2</a>
-      <a href="" id="btnEx3">Exercise 3</a>
-      <!-- <a href="" id="btnEx4">Exercise 4</a> -->
-    </div>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
 
-    <div class="main">
-      <div id="1">
-        Solution exercise 1 here
-      </div>
-      <div id="2">
-        Solution exercise 2 here
-      </div>
-      <div id="3">
-        Solution exercise 3 here
-      </div>
-      <!-- <div id="4">
-        Solution exercise 3 here
-      </div> -->
+<body>
+  <div class="main" style="overflow-y: auto;">
+    <table align="right">
+      <thead>
+        <tr>
+          <th>
+            ZIPCODE
+          </th>
+          <th>
+            CITY
+          </th>
+        </tr>
+      </thead>
+      <tbody id="tbZip"></tbody>
+    </table>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>EMAIL</th>
+            <th>HOBBY</th>
+          </tr>
+        </thead>
+        <tbody id="tb"></tbody>
+      </table>
+      <button type="button" id="reload">All Persons</button><br>
+      <p type="text" id="hobbyCount"></p>
+      <input type="text" id="findHobbyCount" placeholder="Enter hobby name">
+      <button id="getHobbyCount">get hobby count</button>
     </div>
+    <input type="text" id="getHobby" placeholder="Enter hobby name">
+    <button id="getByHobby">person by hobby</button>
+    <br>
+    <input type="text" id="getCity" placeholder="Enter city name">
+    <button id="getByCity">person by zipcode</button>
+    <br><br>
+    <div align="left">
+      Add a member:<br>
+      <input type="text" id="userFirstName" placeholder="First name"><br>
+      <input type="text" id="userLastName" placeholder="Last name"><br>
+      <input type="text" id="userEmail" placeholder="Email"><br>
+      <input type="text" id="userStreet" placeholder="Street"><br>
+      <input type="text" id="userCity" placeholder="City"><br>
+      <input type="text" id="userZip" placeholder="Zipcode"><br>
+      <input type="text" id="userPhone" placeholder="Phone nr.">Phones, seperated by "," <br>
+      <button type="button" button id="addMemb">Submit</button>
+    </div>
+    <br>
+
+    <div>
+      Update a member:<br>
+      <input type="number" id="idForPersonToChange" placeholder="ID"><br>
+      <input type="text" id="userFirstNameChange" placeholder="First name"><br>
+      <input type="text" id="userLastNameChange" placeholder="Last name"><br>
+      <input type="text" id="userEmailChange" placeholder="Email"><br>
+      <input type="text" id="userStreetChange" placeholder="Street"><br>
+      <input type="text" id="userCityChange" placeholder="City"><br>
+      <input type="text" id="userZipChange" placeholder="Zipcode"><br>
+      <input type="text" id="userPhoneChange" placeholder="Phone nr.">Phones, seperated by "," <br>
+      <button type="button" button id="editMember">Submit</button>
+    </div>
+    <br>
+
+    <br>
+    Delete a member:<br>
+    ID: <input type="text" id="deleteId">
+    <button type="button" button id="deleteMember">Submit</button>
+    <br>
+
+
     <script src="bundle.js"></script>
-  </body>
+</body>
+
 </html>
