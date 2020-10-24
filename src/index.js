@@ -87,6 +87,73 @@ function allPersons() {
             });
         }
     
+        document.getElementById("addMemb").onclick = () => {
+
+            const dataMember = {
+             firstName: document.getElementById("userFirstName").value,
+             lastName: document.getElementById("userLastName").value,
+             phone: document.getElementById("userPhone").value,
+             email: document.getElementById("userEmail").value,
+             street: document.getElementById("userStreet").value,
+             zip: document.getElementById("userZip").value,
+             city: document.getElementById("userCity").value,
+         }
+             fetch("http://localhost:8080/jpareststarter/api/person", {
+                 method: 'post',
+                 headers: {
+                   'Accept': 'application/json, text/plain, */*',
+                   'Content-Type': 'application/json'
+           },
+             body: JSON.stringify(dataMember)
+               }).then(res=>res.json())
+              .then(res => console.log(res));
+              console.log(dataMember)
+         }
+         
+         
+         document.getElementById("editMember").onclick = () => {
+
+            const putId = document.getElementById("idForPersonToChange").value;
+            const dataMember = {
+                firstName: document.getElementById("userFirstNameChange").value,
+                lastName: document.getElementById("userLastNameChange").value,
+                phone: document.getElementById("userPhoneChange").value,
+                email: document.getElementById("userEmailChange").value,
+                street: document.getElementById("userStreetChange").value,
+                zip: document.getElementById("userZipChange").value,
+                city: document.getElementById("userCityChange").value,
+            }
+            
+            fetch("http://localhost:8080/jpareststarter/api/person" + "/" + putId, {
+                method: 'put',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataMember)
+            }).then(res => res.json())
+                .then(res => console.log(res));
+            console.log(dataMember)
+        }
+         
+
+        document.getElementById("deleteMember").onclick = () => {
+
+            const putId = document.getElementById("deleteId").value;
+        
+            fetch("http://localhost:8080/jpareststarter/api/person" + "/" + putId, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+        }
+            })
+            .then(res => res.text()) // or res.json()
+            .then(res => console.log(res))
+        
+            
+         }    
+    
         
 
     function fetchWithErrorCheck(res) {
