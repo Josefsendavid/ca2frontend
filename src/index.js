@@ -152,6 +152,23 @@ function allPersons() {
         
             
          }    
+
+         document.getElementById("addHobby").onclick = () => {
+
+            const putId = document.getElementById("userIdToAddHobby").value;
+            const hobbies = document.getElementById("hobbyToAdd").value;
+        
+            fetch("http://localhost:8080/jpareststarter/api/person/addHobby" + "/" + putId, {
+                method: 'put',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: hobbies
+            }).then(res => res.json())
+                .then(res => console.log(res));
+            console.log(hobbies)
+        }
     
         
 
